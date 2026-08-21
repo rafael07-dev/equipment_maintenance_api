@@ -24,7 +24,4 @@ public class MaintenanceStaff {
     private boolean availability;
     private Integer maintenanceCompleted;
     private String signaturePath;
-
-    @Builder.Default
-    private List<Order> orderList = new ArrayList<>();
 }

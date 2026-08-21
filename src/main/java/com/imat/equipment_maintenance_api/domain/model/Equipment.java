@@ -29,13 +29,4 @@ public class Equipment {
     private String frequency;
     private String floor;
     private String tower;
-
-    @Builder.Default
-    private List<Maintenance> maintenances = new ArrayList<>();
-
-    @Builder.Default
-    private List<MaintenanceSchedule> maintenanceSchedules = new ArrayList<>();
-
-    @Builder.Default
-    private List<Order> orderList = new ArrayList<>();
 }
