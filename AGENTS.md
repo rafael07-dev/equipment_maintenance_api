@@ -56,7 +56,7 @@ Base: `com.imat.equipment_maintenance_api`
 | `infrastructure/adapter/out/persistence`                               | Adaptadores de Persistencia: Entidades JPA (@Entity), Repositorios JpaRepository y Adaptadores. | domain + Spring Data JPA / Jakarta Persistence |
 | `infrastructure/adapter/out/*`   <br/> (storage, notification, report) | Adaptadores técnicos de Salida: Almacenamiento de firmas e imágenes, WebSockets/STOMP, reportes PDF/Excel. | domain + Librerías externas requeridas |
 | `infrastructure/security`                                              | Configuración de JWT, Spring Security y Control de Acceso Basado en Roles (RBAC). | domain + Spring Security |
-| `infrastructure/config`                                                | Configuración de Beans de Spring (BeanConfiguration) para registrar e inyectar los UseCases de application/usecase | domain + application + Spring Context |
+| `infrastructure/config`                                                | Configuración de Beans de Spring (BeanConfiguration) para registrar e inyectar los UseCases de application/service | domain + application + Spring Context |
 
 
 Flujo: Controller → puerto de entrada → UseCase → puerto de salida → adaptador.

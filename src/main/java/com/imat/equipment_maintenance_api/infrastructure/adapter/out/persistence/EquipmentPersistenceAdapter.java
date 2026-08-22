@@ -7,6 +7,8 @@ import com.imat.equipment_maintenance_api.infrastructure.adapter.out.persistence
 import com.imat.equipment_maintenance_api.infrastructure.adapter.out.persistence.repository.SpringDataEquipmentRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class EquipmentPersistenceAdapter implements EquipmentRepositoryPort {
 
@@ -23,5 +25,15 @@ public class EquipmentPersistenceAdapter implements EquipmentRepositoryPort {
     public Equipment save(Equipment equipment) {
         EquipmentEntity saved = equipmentRepository.save(equipmentEntityMapper.toEntity(equipment));
         return equipmentEntityMapper.toDomain(saved);
+    }
+
+    @Override
+    public Optional<Equipment> findById(Long id) {
+        return equipmentRepository.findById(id).map(equipmentEntityMapper::toDomain);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        equipmentRepository.deleteById(id);
     }
 }
