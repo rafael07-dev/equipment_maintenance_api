@@ -17,6 +17,7 @@ Estas reglas son **obligatorias**. No las violes bajo ninguna circunstancia:
 4. **Encapsulamiento del dominio:** las entidades protegen sus reglas con métodos explícitos de negocio (ej. `mantenimiento.completar(...)`). Evita getters/setters mutables indiscriminados.
 5. **Puertos primero:** NO crees archivos en `infrastructure/` sin haber definido antes su Puerto correspondiente (`port/in` o `port/out`) en `domain/`.
 6. **Dependencias hacia adentro:** `infrastructure` depende de `domain`; jamás al revés.
+7. **Ejecutar el proyecto sin mi consentimiento, despues de generar archivos**
 
 ---
 
