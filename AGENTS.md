@@ -45,13 +45,18 @@ Estas reglas son **obligatorias**. No las violes bajo ninguna circunstancia:
 
 Base: `com.imat.equipment_maintenance_api`
 
-| Paquete | Responsabilidad | Puede depender de |
-|---|---|---|
-| `domain/model`, `domain/enums`, `domain/exception` | Entidades puras, enums, excepciones | Solo JDK/Lombok |
-| `domain/port/in` | Casos de uso (interfaces) | `domain/model` |
-| `domain/port/out` | Repositorios, Storage, Notification, Report (interfaces) | `domain/model` |
-| `application/usecase` | Implementa puertos de entrada; `@Transactional` aquí | domain completo |
-| `infrastructure/*` | Adaptadores: `persistence` (JPA), `web` (REST/DTOs/advice), `storage`, `notification`, `report`, `security`, `config` | domain + Spring |
+| Paquete                                                                | Responsabilidad | Puede depender de |
+|------------------------------------------------------------------------|---|---|
+| `domain/model`, `domain/enums`, `domain/exception`                     | Entidades puras, enums, excepciones | Solo JDK/Lombok |
+| `domain/port/in`                                                       | Casos de uso (interfaces) | `domain/model` |
+| `domain/port/out`                                                      | Repositorios, Storage, Notification, Report (interfaces) | `domain/model` |
+| `application/usecase`                                                  | Implementa puertos de entrada; `@Transactional` aquí | domain completo |
+| `infrastructure/adapter/in/web`                                        | Adaptadores de Entrada: Controladores REST, DTOs (records), Mapeadores (mappers) y Manejador Global de Errores. | domain + application + Spring Web |
+| `infrastructure/adapter/out/persistence`                               | Adaptadores de Persistencia: Entidades JPA (@Entity), Repositorios JpaRepository y Adaptadores. | domain + Spring Data JPA / Jakarta Persistence |
+| `infrastructure/adapter/out/*`   <br/> (storage, notification, report) | Adaptadores técnicos de Salida: Almacenamiento de firmas e imágenes, WebSockets/STOMP, reportes PDF/Excel. | domain + Librerías externas requeridas |
+| `infrastructure/security`                                              | Configuración de JWT, Spring Security y Control de Acceso Basado en Roles (RBAC). | domain + Spring Security |
+| `infrastructure/config`                                                | Configuración de Beans de Spring (BeanConfiguration) para registrar e inyectar los UseCases de application/usecase | domain + application + Spring Context |
+
 
 Flujo: Controller → puerto de entrada → UseCase → puerto de salida → adaptador.
 
