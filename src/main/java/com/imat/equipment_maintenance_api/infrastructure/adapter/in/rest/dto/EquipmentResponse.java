@@ -1,7 +1,6 @@
-package com.imat.equipment_maintenance_api.domain.model;
+package com.imat.equipment_maintenance_api.infrastructure.adapter.in.rest.dto;
 
-public class Equipment {
-
+public class EquipmentResponse {
     private Long id;
     private String equipmentName;
     private String imageUrl;
@@ -16,12 +15,9 @@ public class Equipment {
     private String floor;
     private String tower;
 
-    public Equipment(Long id, String equipmentName, String imageUrl, String type, String inventoryCode, String brand, String model, String series, String location, String area, String frequency, String floor, String tower) {
-
-        if (inventoryCode.isBlank()){
-            throw new IllegalArgumentException("inventory code is required");
-        }
-
+    public EquipmentResponse(Long id, String equipmentName, String imageUrl, String type, String inventoryCode,
+                             String brand, String model, String series, String location, String area,
+                             String frequency, String floor, String tower) {
         this.id = id;
         this.equipmentName = equipmentName;
         this.imageUrl = imageUrl;
