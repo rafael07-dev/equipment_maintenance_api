@@ -51,7 +51,7 @@ Base: `com.imat.equipment_maintenance_api`
 | `domain/model`, `domain/enums`, `domain/exception`                     | Entidades puras, enums, excepciones | Solo JDK/Lombok |
 | `domain/port/in`                                                       | Casos de uso (interfaces) | `domain/model` |
 | `domain/port/out`                                                      | Repositorios, Storage, Notification, Report (interfaces) | `domain/model` |
-| `application/usecase`                                                  | Implementa puertos de entrada; `@Transactional` aquí | domain completo |
+| `application/service`                                                   | Implementa puertos de entrada; `@Transactional` aquí | domain completo |
 | `infrastructure/adapter/in/web`                                        | Adaptadores de Entrada: Controladores REST, DTOs (records), Mapeadores (mappers) y Manejador Global de Errores. | domain + application + Spring Web |
 | `infrastructure/adapter/out/persistence`                               | Adaptadores de Persistencia: Entidades JPA (@Entity), Repositorios JpaRepository y Adaptadores. | domain + Spring Data JPA / Jakarta Persistence |
 | `infrastructure/adapter/out/*`   <br/> (storage, notification, report) | Adaptadores técnicos de Salida: Almacenamiento de firmas e imágenes, WebSockets/STOMP, reportes PDF/Excel. | domain + Librerías externas requeridas |

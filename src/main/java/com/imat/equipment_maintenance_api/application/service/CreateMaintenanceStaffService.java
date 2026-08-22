@@ -4,11 +4,11 @@ import com.imat.equipment_maintenance_api.domain.model.MaintenanceStaff;
 import com.imat.equipment_maintenance_api.domain.port.in.CreateMaintenanceStaffUseCase;
 import com.imat.equipment_maintenance_api.domain.port.out.MaintenanceStaffRepositoryPort;
 
-public class MaintenanceStaffService implements CreateMaintenanceStaffUseCase {
+public class CreateMaintenanceStaffService implements CreateMaintenanceStaffUseCase {
 
     private final MaintenanceStaffRepositoryPort maintenanceStaffRepositoryPort;
 
-    public MaintenanceStaffService(MaintenanceStaffRepositoryPort maintenanceStaffRepositoryPort) {
+    public CreateMaintenanceStaffService(MaintenanceStaffRepositoryPort maintenanceStaffRepositoryPort) {
         this.maintenanceStaffRepositoryPort = maintenanceStaffRepositoryPort;
     }
 

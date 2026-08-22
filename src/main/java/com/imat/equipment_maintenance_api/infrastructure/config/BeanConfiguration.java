@@ -1,7 +1,7 @@
 package com.imat.equipment_maintenance_api.infrastructure.config;
 
-import com.imat.equipment_maintenance_api.application.service.EquipmentService;
-import com.imat.equipment_maintenance_api.application.service.MaintenanceStaffService;
+import com.imat.equipment_maintenance_api.application.service.CreateEquipmentService;
+import com.imat.equipment_maintenance_api.application.service.CreateMaintenanceStaffService;
 import com.imat.equipment_maintenance_api.domain.port.in.CreateEquipmentUseCase;
 import com.imat.equipment_maintenance_api.domain.port.in.CreateMaintenanceStaffUseCase;
 import com.imat.equipment_maintenance_api.domain.port.out.EquipmentRepositoryPort;
@@ -14,11 +14,11 @@ public class BeanConfiguration {
 
     @Bean
     public CreateEquipmentUseCase createEquipmentUseCase(EquipmentRepositoryPort equipmentRepositoryPort) {
-        return new EquipmentService(equipmentRepositoryPort);
+        return new CreateEquipmentService(equipmentRepositoryPort);
     }
 
     @Bean
     public CreateMaintenanceStaffUseCase createMaintenanceStaffUseCase(MaintenanceStaffRepositoryPort maintenanceStaffRepositoryPort){
-        return new MaintenanceStaffService(maintenanceStaffRepositoryPort);
+        return new CreateMaintenanceStaffService(maintenanceStaffRepositoryPort);
     }
 }
