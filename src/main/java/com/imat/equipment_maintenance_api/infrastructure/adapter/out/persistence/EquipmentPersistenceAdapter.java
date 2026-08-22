@@ -2,6 +2,8 @@ package com.imat.equipment_maintenance_api.infrastructure.adapter.out.persistenc
 
 import com.imat.equipment_maintenance_api.domain.model.Equipment;
 import com.imat.equipment_maintenance_api.domain.port.out.EquipmentRepositoryPort;
+import com.imat.equipment_maintenance_api.infrastructure.adapter.out.persistence.entity.EquipmentEntity;
+import com.imat.equipment_maintenance_api.infrastructure.adapter.out.persistence.mapper.EquipmentEntityMapper;
 import com.imat.equipment_maintenance_api.infrastructure.adapter.out.persistence.repository.SpringDataEquipmentRepository;
 import org.springframework.stereotype.Component;
 
@@ -9,13 +11,17 @@ import org.springframework.stereotype.Component;
 public class EquipmentPersistenceAdapter implements EquipmentRepositoryPort {
 
     private final SpringDataEquipmentRepository equipmentRepository;
+    private final EquipmentEntityMapper equipmentEntityMapper;
 
-    public EquipmentPersistenceAdapter(SpringDataEquipmentRepository equipmentRepository) {
+    public EquipmentPersistenceAdapter(SpringDataEquipmentRepository equipmentRepository,
+                                       EquipmentEntityMapper equipmentEntityMapper) {
         this.equipmentRepository = equipmentRepository;
+        this.equipmentEntityMapper = equipmentEntityMapper;
     }
 
     @Override
     public Equipment save(Equipment equipment) {
-        return equipmentRepository.save(equipment);
+        EquipmentEntity saved = equipmentRepository.save(equipmentEntityMapper.toEntity(equipment));
+        return equipmentEntityMapper.toDomain(saved);
     }
 }
